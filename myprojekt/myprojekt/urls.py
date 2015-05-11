@@ -3,21 +3,24 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from .settings import MEDIA_ROOT, DEBUG
 
+#journal
+from students.views.journal import JournalView
+
 urlpatterns = patterns('',
     # Students urls
-    url(r'^$', 'students.views.student_list', name='home'),
-	url(r'^students/add/$', 'students.views.students_add', name='students_add'),
-	url(r'^students/(?P<sid>[0-9]+)/edit/$', 'students.views.students_edit', name='students_edit'),
+    url(r'^$', 'students.views.students.student_list', name='home'),
+	url(r'^students/add/$', 'students.views.students.students_add', name='students_add'),
+	url(r'^students/(?P<sid>[0-9]+)/edit/$', 'students.views.students.students_edit', name='students_edit'),
 	
 	#Groups urls
-	url(r'^groups/$', 'students.views.groups_list', name='groups_list'),
-	url(r'^groups/add/$', 'students.views.groups_add', name='groups_add'),
-	url(r'^groups/(?P<sid>[0-9]+)/edit/$', 'students.views.groups_edit', name='groups_edit'),
-	url(r'^groups/(?P<sid>[0-9]+)/delete/$', 'students.views.groups_delete', name='groups_delete'),
+	url(r'^groups/$', 'students.views.groups.groups_list', name='groups_list'),
+	url(r'^groups/add/$', 'students.views.groups.groups_add', name='groups_add'),
+	url(r'^groups/(?P<sid>[0-9]+)/edit/$', 'students.views.groups.groups_edit', name='groups_edit'),
+	url(r'^groups/(?P<sid>[0-9]+)/delete/$', 'students.views.groups.groups_delete', name='groups_delete'),
 	#Journal urls
-	url(r'^journal/$', 'students.views.journal', name='journal'),
+	url(r'^journal/$', JournalView.as_view(), name='journal'),
 	
-    # url(r'^blog/', include('blog.urls')),
+    #url(r'^blog/', include('blog.urls')),
 	
     url(r'^admin/', include(admin.site.urls)),
 )  

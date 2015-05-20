@@ -24,3 +24,4 @@ def groups_edit(request, sid):
 	
 def groups_delete(request, sid):
 	return HttpResponse('group %s delete form' %sid)
+	

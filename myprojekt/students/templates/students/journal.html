@@ -15,12 +15,19 @@
 
 {% else %}
 
+<div class="alert alert-warning">
+	Зміни в жуналі зберігаються автоматично при кожному кліку в клітинці таблиці<br>
+	<span id="ajax-progress-indicator">Йде збереження ...<span/>
+</div>
+
 <p id="journal-nav" class="text-center">
-	<a href="?month={{ prev_month }}" title="Попередній Місяць">&larr;</a>
+	<a href="?month={{ prev_month }}" 
+	title="Попередній Місяць">&larr;</a>
 
 	<!-- TODO: translate month name -->
 	<strong>{{ month_verbose }} {{ year }}</strong>
-	<a href="?month={{ next_month }}" title="Наступний Місяць">&rarr;</a>
+	<a href="?month={{ next_month }}" 
+	title="Наступний Місяць">&rarr;</a>
 </p>
 
 <table class="table table-hover table-striped table-bordered" 
@@ -44,10 +51,9 @@
 <tbody>
 
 	{% csrf_token %}
-
+	
 	{% for student in students %}
 	<tr>
-
 		<td>
 		{% if is_paginated %}
 			{{ page_obj.start_index|add:forloop.counter|add:"-1" }}
@@ -55,7 +61,6 @@
 			{{ forloop.counter }}
 		{% endif %}
 		</td>
-
 		<td>
 		  <a title="Редагувати" target="_blank"
 			href="{% url "students_edit" student.id %}"><!---->

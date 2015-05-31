@@ -30,9 +30,9 @@ class Student(models.Model):
 		verbose_name=u"Дата народження",
 		null=True)
 		
-#	photo = models.ImageField(
-#		blank=True,
-#		verbose_name=u"Фото")
+	photo = models.ImageField(
+		blank=True,
+		verbose_name=u"Фото")
 
 	student_group = models.ForeignKey('Group',
 		verbose_name=u"Група",

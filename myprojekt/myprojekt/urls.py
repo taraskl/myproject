@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     #url(r'^blog/', include('blog.urls')),
 	
     url(r'^admin/', include(admin.site.urls)),
+    # Contact Admin Form
+    url(r'^contact-admin/$', 'students.views.contact_admin.contact_admin', name='contact_admin'),
 )  
 
 if DEBUG:

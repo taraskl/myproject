@@ -6,6 +6,7 @@ __pycache__/
 demo_data.json
 db.sqlite3
 
+
 # C extensions
 *.so
 
